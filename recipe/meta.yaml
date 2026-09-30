@@ -4,15 +4,15 @@
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: https://cpan.metacpan.org/authors/id/I/IN/INGY/Test-Base-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  skip: true   # [win]
-  number: 0
+  noarch: generic
+  number: 1
   run_exports:
     weak:
       - {{ name }} ={{ version }}
@@ -27,6 +27,7 @@ requirements:
     - perl-text-diff
   run:
     - perl
+    - perl-spiffy
 
 test:
   imports:
@@ -37,9 +38,7 @@ test:
 about:
   home: https://github.com/ingydotnet/test-base-pm
   license: GPL-1.0-or-later OR Artistic-1.0-Perl
-  license_file:
-    - {{ environ["PREFIX"] }}/man/man1/perlartistic.1
-    - {{ environ["PREFIX"] }}/man/man1/perlgpl.1
+  license_file: LICENSE
   summary: 'A Data Driven Testing Framework'
 
 extra:
